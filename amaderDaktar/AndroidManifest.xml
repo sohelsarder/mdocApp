@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2009 University of Washington Licensed under the Apache 
+	License, Version 2.0 (the "License"); you may not use this file except in 
+	compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mpower.mintel.android"
+    android:versionCode="14"
+    android:versionName="1.1.7" >
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <application
+        android:name="com.mpower.mintel.android.application.MIntel"
+        android:icon="@drawable/notes"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+        <provider
+            android:name="com.mpower.mintel.android.provider.FormsProvider"
+            android:authorities="com.mpower.mintel.android.provider.forms" />
+        <provider
+            android:name="com.mpower.mintel.android.provider.InstanceProvider"
+            android:authorities="com.mpower.mintel.android.provider.instances" />
+
+        <activity
+            android:name="com.mpower.mintel.android.activities.MainMenuActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.mpower.mintel.android.activities.FormEntryActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/vnd.mintel.form" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.mintel.instance" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mpower.mintel.android.activities.AccountList"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.AccountInfo"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.InstanceChooserList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <action android:name="android.intent.action.EDIT" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+
+            <data android:mimeType="vnd.android.cursor.dir/vnd.mintel.instance" />
+        </intent-filter>
+
+        <activity
+            android:name="com.mpower.mintel.android.activities.InstanceChooserTabs"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.FormChooserList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.dir/vnd.mintel.form" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mpower.mintel.android.activities.FormManagerList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.FormDownloadList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.DataManagerList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.FileManagerTabs"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.InstanceUploaderList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.InstanceUploaderActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.preferences.PreferencesActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.FormHierarchyActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.GeoPointActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.GeoPointMapActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.mpower.mintel.android.activities.SplashScreenActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Enable Shortcuts for Command Actions -->
+        <activity
+            android:name="com.mpower.mintel.android.activities.AndroidShortcuts"
+            android:label="mIntel Form"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+
+        <activity
+            android:name="com.mpower.mintel.android.activities.RmpHome"
+            android:label="@string/title_activity_rmp_home"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.mpower.mintel.android.activities.PatientHome"
+            android:label="@string/title_activity_patient_home"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service
+            android:name="com.mpower.mintel.android.services.PushService"
+            android:enabled="true"
+            android:stopWithTask="true" >
+        </service>
+
+        <activity
+            android:name="com.mpower.mintel.android.activities.DownloadActivity"
+            android:label="@string/title_activity_download"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.mpower.mintel.android.activities.NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:theme="@style/Theme.Transparent" >
+        </activity>
+
+        <receiver android:name="com.mpower.mintel.android.utilities.NotificationReceiver" >
+        </receiver>
+
+        <activity
+            android:name="com.mpower.mintel.android.AppointmentActivity"
+            android:label="@string/title_activity_appointment" >
+        </activity>
+    </application>
+
+    <uses-permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="android.permission.INTERNET" />
+    <uses-permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="android.permission.ACCESS_SURFACE_FLINGER" />
+    <uses-permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-sdk android:minSdkVersion="14" >
+    </uses-sdk>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+</manifest>

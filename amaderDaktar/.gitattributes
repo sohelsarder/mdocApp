@@ -1,0 +1,5 @@
+*.so -crlf -diff -merge
+*.jar -crlf -diff -merge
+*.png -crlf -diff -merge
+*.jpg -crlf -diff -merge
+*.apk -crlf -diff -merge
